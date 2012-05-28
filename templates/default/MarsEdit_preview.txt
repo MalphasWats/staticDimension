@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="icon" href="favicon.gif" type="image/x-icon">
+
+<link rel="stylesheet" type="text/css" href="templates/default/style/default.css">
+
+<title>#title#</title>
+
+</head>
+
+<body>
+
+<header>
+	<h1>staticDimension</h1>
+	<nav>
+		<ul>
+			<li><a href="./">[home]</a></li>
+			<li><a href="./archive.html">[archive]</a></li>
+			<li><a href="./pages/about.html">[about]</a></li>
+		</ul>
+	</nav>
+</header>
+
+<section id="page_content">
+	<h1>#title#</h1>
+	#body#
+</section>
+
+<section id="sidebar">
+	<h2>links</h2>
+	<ul>
+		<li><a href="http://subdimension.co.uk/pages/projects.html">subDimension.co.uk</a></li>
+	</ul>
+</section>
+
+<footer>copyright 2011</footer>
+
+</body>
+</html>

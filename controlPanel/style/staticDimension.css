@@ -1,0 +1,192 @@
+* {margin:0; padding:0;}
+
+body {font-family: Helvetica, Arial, sans-serif; width:800px; margin:0 auto;}
+
+h1, h2, h3, h4, h5, h6 {font-weight:normal; text-transform: uppercase;}
+h2 {margin-top:12px;}
+
+header {color:#404040; font-variant: }
+
+header nav {display:block; font-size:14pt; border-bottom:1px solid #404040; padding-bottom:6px;}
+
+header nav a {text-decoration: none;}
+header nav a.selected {font-weight:bold;}
+
+a {color:#336699;}
+
+header nav ul {overflow:auto; list-style-type: none;}
+
+header nav ul li {float:left; margin-left: 12px;}
+
+section {float:left; margin:8px;}
+
+section#page_content {/*width:650px;*/ min-height: 400px;}
+
+section#sidebar {width:200px; min-height: 400px; background-color:#eeeeee; padding:8px; /*text-align: right;*/ margin:0px;}
+
+section#sidebar ul {list-style-type: none; font-size:11pt;}
+section#sidebar h3 {text-align:right; margin-bottom:12px;}
+section#sidebar h4 {font-size:11pt; margin-top:12px;}
+
+footer {font-size:8pt; text-align: center; border-top: 1px solid #404040; clear:both;}
+
+section#page_content section {float:left;}
+section#page_content section:first-child {width:550px;}
+
+section#page_content dl, section#page_content p {padding:8px;}
+section#page_content dd {padding:8px;}
+
+ul#articleList {width:600px; list-style-type: none;}
+ul#articleList li a:first-child {display:inline-block; width:550px;}
+
+ul#pageList {width:600px; list-style-type: none;}
+ul#pageList li a:first-child {display:inline-block; width:550px;}
+
+ul#draftList {width:600px; list-style-type: none;}
+ul#draftList li a:first-child {display:inline-block; width:550px;}
+
+/*dl#userList {width:450px; list-style-type: none;}*/
+
+ul#fileBrowser
+{
+	list-style:none;
+	margin:0px /*8px 8px 0 8px*/; padding:0;
+	border:3px solid #eeeeee;
+	overflow:auto;
+}
+
+ul#fileBrowser li 
+{
+	float:left;
+	width:100px;
+	
+	margin:4px;
+}
+
+ul#fileBrowser a, td#fileInfo a
+{
+	display:block; 
+	height:28px;
+	padding-top:48px;
+	text-align:center;
+	overflow:hidden;
+	background:url("fileIcons/fileIcon-default.png") top center no-repeat;
+	line-height:1em;
+	font-size:0.8em;
+	text-decoration:none;
+}
+
+ul#fileBrowser a.file {width:100px;}
+
+ul#fileBrowser a:hover, td#fileInfo a:hover{border-bottom:none; background-color:#dddddd !important;}
+
+section#page_content p#breadcrumb {background-color:#eeeeee; display:inline-block; padding:4px 24px 4px 12px;}
+
+section table 
+{
+	border-collapse:collapse;
+	line-height:1.4em;
+	text-align:justify;
+	margin:1em auto 0.4em auto;
+}
+section table td, section table th
+{
+	border:1px solid #7b797a;
+	padding:4px;
+	max-width:380px;
+	text-align:center;
+}
+section table th {background:#7b797a; color:white;}
+
+section table input
+{
+	padding:0.1em;
+	margin:0;
+	width:90px;
+}
+section table select {width:94px;}
+
+section table input.btn
+{
+	width:55px;
+}
+
+section table ul
+{
+	padding:0;
+	list-style-type:none;
+}
+
+/* Special Styles */
+
+#content a.writeMode
+{
+	background:url("assets/default/actionPanelIcons.png") -24px 0px no-repeat;
+	display:block;
+	width:24px; height:31px;
+	position:absolute;
+	/*bottom:10px;*/ right:108px;
+}
+
+#content a.closeWriteMode
+{
+	background:url("assets/default/close.png") left no-repeat;
+	display:block;
+	width:120px; height:40px;
+	position:absolute;
+	top:10px; right:10px;
+}
+
+#content a.writeMode:hover
+{
+	background:url("assets/default/actionPanelIcons.png") -24px -31px no-repeat;
+	border:none;
+}
+
+#content p.writeMode
+{
+	padding: 5% 0px 0px 0px; 
+	background: transparent url("/style/assets/default/transp-bg.png") repeat;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	text-align: center;
+	z-index: 10;
+}
+
+#content p.writeMode textarea
+{
+	width: 60%;
+	height: 80%;
+	background-color:white;
+}
+
+div.writeMode
+{
+	position:fixed !important; right:10px; top:10% !important; left:inherit !important;
+}
+
+
+/* File Icons */
+.gif {background:url("fileIcons/fileIcon-gif.png") top center no-repeat !important}
+.jpg, .png {background:url("fileIcons/fileIcon-jpg.png") top center no-repeat !important}
+.bmp {background:url("fileIcons/fileIcon-bmp.png") top center no-repeat !important}
+.txt {background:url("fileIcons/fileIcon-txt.png") top center no-repeat !important}
+.doc {background:url("fileIcons/fileIcon-doc.png") top center no-repeat !important}
+.docx {background:url("fileIcons/fileIcon-docx.png") top center no-repeat !important}
+.xls {background:url("fileIcons/fileIcon-xls.png") top center no-repeat !important}
+.xlsx {background:url("fileIcons/fileIcon-xlsx.png") top center no-repeat !important}
+.ppt {background:url("fileIcons/fileIcon-ppt.png") top center no-repeat !important}
+.pptx {background:url("fileIcons/fileIcon-pptx.png") top center no-repeat !important}
+.fla {background:url("fileIcons/fileIcon-fla.png") top center no-repeat !important}
+.swf {background:url("fileIcons/fileIcon-swf.png") top center no-repeat !important}
+.pdf {background:url("fileIcons/fileIcon-pdf.png") top center no-repeat !important}
+.wmv, .wma {background:url("fileIcons/fileIcon-wmv.png") top center no-repeat !important}
+.m4v, .mov {background:url("fileIcons/fileIcon-m4v.png") top center no-repeat !important}
+.mp3 {background:url("fileIcons/fileIcon-mp3.png") top center no-repeat !important}
+.dir {background:url("fileIcons/fileIcon-folder.png") top center no-repeat !important}
+.dirx {background:url("fileIcons/fileIcon-folder-x.png") top center no-repeat !important}
+.html, .htm {background:url("fileIcons/fileIcon-html.png") top center no-repeat !important}
+.xml {background:url("fileIcons/fileIcon-xml.png") top center no-repeat !important}

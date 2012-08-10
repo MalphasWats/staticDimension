@@ -771,7 +771,7 @@
 
 						$e = $this->getArticleElements($files[$i]);
 						
-						if ($e['link'] == '') {$url = $this->settings['siteRoot'].$lurl;}
+						if ($e['link'] == '') {$url = $lurl;}
 						else {$url = $e['link'];}
 						
 						$title = '<a href='.$url.'><h3>'.$e['title'].'</h3></a>';

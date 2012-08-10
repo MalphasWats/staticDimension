@@ -37,8 +37,8 @@
 	
 	if(!$_POST['draft'])
 	{
-		//update homepage
-		$sd->buildHomepage();
+		//update homepage and archive
+		$sd->updateSite();
 	}
 	
 	header('Location: ../'.$url);

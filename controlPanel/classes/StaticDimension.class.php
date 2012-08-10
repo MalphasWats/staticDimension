@@ -240,7 +240,11 @@
 				unlink('../'.$pagePath);
 			}
 
-			if ($this->settings['singlePageArchive'] != "true")	
+			if ($this->settings['singlePageArchive'])	
+			{
+				$this->rebuildArchive();
+			}
+			else
 			{
 				$this->buildArchive(substr($pagePath, 0, 10));
 			}
@@ -572,6 +576,12 @@
 			$this->rebuildArticles();
 			$this->rebuildArchive();
 			$this->rebuildPages();
+		}
+
+		public function updateSite()
+		{
+			$this->buildHomepage();
+			$this->rebuildArchive();
 		}
 		
 		private function rebuildArticles()

@@ -104,7 +104,7 @@
 		folder archives. Single-page format lists all posts by title and byline (author, 
 		date and time) in reverse order of posting.
 
-		A value of 'true' enables single-page archives. Any other value currently uses
+		A value of \'true\' enables single-page archives. Any other value currently uses
 		the default archive format.
 	*/
 	$this->settings[\'singlePageArchive\'] = false; 

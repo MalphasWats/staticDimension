@@ -1,2 +1,12 @@
+# Untracked files:
 
+2012/
+archive.html
+articles/
+controlPanel/_settings.php
+controlPanel/_users.php
+feed.xml
+index.html
+pages/
+.gitignore
 .DS_Store

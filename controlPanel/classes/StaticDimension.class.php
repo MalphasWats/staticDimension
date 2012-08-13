@@ -109,7 +109,10 @@
 			
 			$success = file_put_contents("../$pagePath", $page);
 			
-			$this->buildArchive($apath);
+			if ($this->settings['singlePageArchive'] != "true")	
+			{
+				$this->buildArchive($apath);
+			}
 			
 			return $pagePath;
 		}
@@ -236,8 +239,15 @@
 			{
 				unlink('../'.$pagePath);
 			}
-			
-			$this->buildArchive(substr($pagePath, 0, 10));
+
+			if ($this->settings['singlePageArchive'])	
+			{
+				$this->rebuildArchive();
+			}
+			else
+			{
+				$this->buildArchive(substr($pagePath, 0, 10));
+			}
 		}
 		
 		public function deletePage($filename)
@@ -537,6 +547,14 @@
 			}
 			
 			$feed->writeOutFeed('../feed.xml');
+
+			// Creat the actual page content
+
+			// If single-page archive set, add the link
+			if ($this->settings['singlePageArchive']) 
+			{
+				$output .= '<a href="archive.html">More articles...</a>';
+			}
 			
 			$template = file_get_contents('../templates/'.$this->settings['currentTemplate'].'/_home.html');
 			
@@ -558,6 +576,12 @@
 			$this->rebuildArticles();
 			$this->rebuildArchive();
 			$this->rebuildPages();
+		}
+
+		public function updateSite()
+		{
+			$this->buildHomepage();
+			$this->rebuildArchive();
 		}
 		
 		private function rebuildArticles()
@@ -743,29 +767,63 @@
 		
 		private function rebuildArchive()
 		{
-			//TODO - need to check for empty directories (from deleted articles)
-			$files = array_reverse(scandir(".."));
-			foreach($files as $f)
-			{
-				$f_ = substr($f, 0, 2);
-				if($f_ == '19' || $f_ == '20')
+			if ($this->settings['singlePageArchive']) {
+				// Create single-page archive of all files in reverse order of creation
+				$files = array_reverse(scandir('../articles/'));
+				
+				for($i=0; $i<count($files)-1; $i++)
 				{
-					$files2 = array_reverse(scandir("../$f"));
-					
-					foreach($files2 as $f2)
+					if ($files[$i] != '.' && $files[$i] != '..')
 					{
+						$content = Markdown(file_get_contents('../articles/'.$files[$i]));
 						
-						if($f2 != '..' && $f2 != '.' && $f2 != 'index.html')
+						$lurl = $this->buildURLFromFilename($files[$i]);
+
+						$e = $this->getArticleElements($files[$i]);
+						
+						if ($e['link'] == '') {$url = $lurl;}
+						else {$url = $e['link'];}
+						
+						$title = '<a href='.$url.'><h3>'.$e['title'].'</h3></a>';
+						$byline = $e['byline'];
+
+						$output .= $title.$byline."\n\n";
+					}
+				}
+				
+				$template = file_get_contents('../templates/'.$this->settings['currentTemplate'].'/_archive.html');
+				
+				$output = str_replace('$PAGE_CONTENT', $output, $template);
+				$output = str_replace('$PAGE_TITLE', 'archive', $output);
+				
+				$success = file_put_contents('../archive.html', $output);
+			}
+			else 
+			{
+				//TODO - need to check for empty directories (from deleted articles)
+				$files = array_reverse(scandir(".."));
+				foreach($files as $f)
+				{
+					$f_ = substr($f, 0, 2);
+					if($f_ == '19' || $f_ == '20')
+					{
+						$files2 = array_reverse(scandir("../$f"));
+						
+						foreach($files2 as $f2)
 						{
 							
-							$files3 = array_reverse(scandir("../$f/$f2"));
-					
-							foreach($files3 as $f3)
+							if($f2 != '..' && $f2 != '.' && $f2 != 'index.html')
 							{
+								
+								$files3 = array_reverse(scandir("../$f/$f2"));
 						
-								if($f3 != '..' && $f3 != '.' && $f3 != 'index.html')
+								foreach($files3 as $f3)
 								{
-									$this->buildArchive("$f/$f2/$f3");
+							
+									if($f3 != '..' && $f3 != '.' && $f3 != 'index.html')
+									{
+										$this->buildArchive("$f/$f2/$f3");
+									}
 								}
 							}
 						}
